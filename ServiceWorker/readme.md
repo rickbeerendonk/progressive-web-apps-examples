@@ -1,6 +1,8 @@
 # Service Worker
 
-## Availability
+## Examples
+
+### Availability
 
 ```javascript
 if ('serviceWorker' in navigator) {
