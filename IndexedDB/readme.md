@@ -15,3 +15,7 @@ Store larger amounts of data then Web Storage.
 1. Specifiy a database schema
 2. Open a connection to your database
 3. Retreive and Update data within transactions
+
+---
+
+Copyright © 2018 Rick Beerendonk
