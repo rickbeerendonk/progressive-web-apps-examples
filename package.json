@@ -1,0 +1,15 @@
+{
+  "name": "progressive-web-apps-examples",
+  "version": "0.1.0",
+  "description": "Examples for Progressive Web Apps.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickbeerendonk/progressive-web-apps-examples.git"
+  },
+  "author": "Rick Beerendonk",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/rickbeerendonk/progressive-web-apps-examples/issues"
+  },
+  "homepage": "https://github.com/rickbeerendonk/progressive-web-apps-examples#readme"
+}
