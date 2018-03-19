@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ServiceWorker - Unregister</title>
+</head>
+
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Registration of the service worker succeeded!');
+
+                    registration.unregister()
+                    .then(unregistered => {
+                        console.log(unregistered ? 'Service worker unregistered' : 'No registered service worker found');
+                    })
+                    .catch(error => {
+                        console.log('Unregister of the service worker failed: ', error);
+                    });
+                })
+                .catch(error => {
+                    console.log('Registration of the service worker failed: ', error);
+                });
+        } else {
+            document.writeln('No service worker support in this browser.');
+        }
+    </script>
+</body>
+
+</html>
