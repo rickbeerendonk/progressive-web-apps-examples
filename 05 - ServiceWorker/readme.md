@@ -1,5 +1,10 @@
 # Service Worker
 
+## Specification
+
+* [Published](https://www.w3.org/TR/service-workers/)
+* [Nightly](https://w3c.github.io/ServiceWorker/)
+
 ## Examples
 
 ### Availability
