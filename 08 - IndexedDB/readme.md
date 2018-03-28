@@ -1,5 +1,9 @@
 # IndexedDB
 
+## Specification
+
+* https://www.w3.org/TR/IndexedDB-2/
+
 ## Documentation
 
 ### Why?
