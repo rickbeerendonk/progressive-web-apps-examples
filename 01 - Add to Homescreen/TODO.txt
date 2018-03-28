@@ -1,1 +1,2 @@
 https://developers.google.com/web/fundamentals/app-install-banners/
+https://developer.mozilla.org/en-US/Apps/Progressive/Add_to_home_screen
