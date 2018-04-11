@@ -19,9 +19,13 @@
             
             database.onclose = function (e) {
                 // new in v2.0
+                // Online fires if the connection closes abnormally.
                 debugger;
-                document.writeln(`Database ${database.name} successfully closed.`)
+                document.writeln(`Database ${database.name} closed.`)
             }
+
+            // Close normally.
+            // Doesn't fire onclose event.
             database.close();
         };
     </script>
