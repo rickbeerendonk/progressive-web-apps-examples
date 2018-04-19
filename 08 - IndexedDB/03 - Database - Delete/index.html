@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IndexedDB - Database - Delete</title>
+</head>
+
+<body>
+    <script>
+        const dbname = 'test';
+
+        // Create/open and close database
+
+        const openRequest = window.indexedDB.open(dbname);
+        openRequest.onsuccess = function (e) {
+            database = this.result;
+            database.close();
+
+            document.writeln('Database created successfully.<br>');
+        };
+
+        // Delete database
+
+        let deleteRequest = window.indexedDB.deleteDatabase(dbname);
+
+        deleteRequest.onerror = function (event) {
+            document.writeln('Error deleting database.<br>');
+        };
+
+        deleteRequest.onsuccess = function (event) {
+            document.writeln('Database deleted successfully.<br>');
+        };
+    </script>
+</body>
+
+</html>
