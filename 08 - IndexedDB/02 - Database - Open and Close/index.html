@@ -6,16 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IndexedDB - Database - Open &amp; Close</title>
+    <title>IndexedDB - Database - Open and Close</title>
 </head>
 <body>
     <script>
-        const request = window.indexedDB.open('test');
-        let database;
+        const dbname = 'test_database_open-and-close';
+        const request = window.indexedDB.open(dbname);
         request.onsuccess = function (e) {
             // this = request
-            database = this.result;
-            document.writeln(`Database ${database.name} successfully opened (version: ${database.version}).`)
+            const database = this.result;
+            document.writeln(`Database <em>${database.name}</em> successfully opened (version: ${database.version}).`)
             
             database.onclose = function (e) {
                 // new in v2.0
