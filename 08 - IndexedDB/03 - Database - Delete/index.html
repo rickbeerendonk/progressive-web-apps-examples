@@ -26,12 +26,10 @@
 
         // Delete database
 
-        let deleteRequest = window.indexedDB.deleteDatabase(dbname);
-
+        const deleteRequest = window.indexedDB.deleteDatabase(dbname);
         deleteRequest.onerror = function (event) {
             document.writeln('Error deleting database.<br>');
         };
-
         deleteRequest.onsuccess = function (event) {
             document.writeln('Database deleted successfully.<br>');
         };
