@@ -24,7 +24,6 @@
 
         const request2 = window.indexedDB.open(dbname, 2);
         request2.onupgradeneeded = function (e) {
-            console.log(e);
             document.writeln(`Database upgraded from version ${e.oldVersion} to version ${e.newVersion}.`);
         };
         request2.onsuccess = function (e) {
