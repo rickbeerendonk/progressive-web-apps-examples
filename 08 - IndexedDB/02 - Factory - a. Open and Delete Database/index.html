@@ -19,9 +19,9 @@
         const openRequest = window.indexedDB.open(dbname);
         openRequest.onsuccess = function (e) {
             database = this.result;
-            database.close();
+            document.writeln(`Database <em>${database.name}</em> created/opened successfully.<br>`);
 
-            document.writeln('Database created successfully.<br>');
+            database.close();
         };
 
         // Delete database
