@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IndexedDB - Database - Initialize</title>
+    <title>IndexedDB - Database - onVersionChange</title>
 </head>
 <body>
     <script>
-        const dbname = 'test_database_onVersionChange';
+        const dbname = 'test_database_upgrade';
 
         // Create database
 
@@ -24,9 +24,7 @@
 
         const request2 = window.indexedDB.open(dbname, 2);
         request2.onupgradeneeded = function (e) {
-            document.writeln(`Database will upgrade from version ${e.oldVersion} to version ${e.newVersion}.`);
-            // Upgrade database
-            document.writeln('The update commands can be defined in the onupgradeneeded event.');
+            document.writeln(`Database upgraded from version ${e.oldVersion} to version ${e.newVersion}.`);
         };
         request2.onsuccess = function (e) {
             // Close database
