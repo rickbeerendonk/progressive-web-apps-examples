@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Storage - Session Storage - Explore existing keys</title>
+</head>
+<body>
+    <script>
+        if (!window.sessionStorage) {
+            document.writeln('No sessionStorage support in this browser.');
+        }
+
+        // Randomly generate some keys:
+        for (let i = 0; i < 1 + Math.ceil(Math.random() * 3); i++) {
+            window.sessionStorage[Math.ceil(Math.random() * 1000)] = Math.random();
+        }
+
+        // Retreive all the keys in the store and show their value:
+        for (let i = 0; i < window.sessionStorage.length; i++) {
+            document.writeln(`Key "${window.sessionStorage.key(i)}" has value ${window.sessionStorage[window.sessionStorage.key(i)]} <br>`);
+        }
+    </script>
+</body>
+</html>
