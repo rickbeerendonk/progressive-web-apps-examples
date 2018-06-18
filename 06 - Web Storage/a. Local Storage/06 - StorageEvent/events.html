@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Storage - StorageEvent (handler)</title>
+</head>
+<body>
+    <ul id="list">
+    </ul>
+
+    <script>
+        const list = document.getElementById('list');
+
+        window.addEventListener('storage', function(e) {  
+            list.innerHTML += `<li>"${e.key}" changed from "${e.oldValue}" to "${e.newValue}" on "${e.url}" in ${e.storageArea === window.localStorage ? 'localStorage' : 'sessionStorage'}</li>`; 
+        });
+    </script>
+</body>
+</html>

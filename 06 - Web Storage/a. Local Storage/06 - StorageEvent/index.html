@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Storage - Local Storage - StorageEvent</title>
+</head>
+<body>
+    <button onclick="openEventsWindow()">Open Events Window</button>
+    <button onclick="changeStorage()">Change Storage</button>
+
+    <script>
+        function openEventsWindow() {
+            // Handle storage event in a different window, 
+            // because it won't fire in the same window
+            // (actions are already known).
+            window.open('events.html', '_blank');
+        }
+
+        function changeStorage() {
+            window.localStorage.clear();
+            window.localStorage.prop1 = 'value1';
+            window.localStorage.prop1 = 'value2';
+            window.localStorage.removeItem('prop1');
+        }
+    </script>
+</body>
+</html>
