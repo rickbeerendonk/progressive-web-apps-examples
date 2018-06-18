@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Storage - Session Storage - Remove and Clear</title>
+</head>
+<body>
+    <button onclick="add()">Add</button>
+    <button onclick="removeFirst()">Remove First</button>
+    <button onclick="removeAll()">Clear</button>
+
+    <ul id="list">
+    </ul>
+
+    <script>
+        show();
+
+        function show() {
+            const list = document.getElementById('list');
+            list.innerHTML = '';
+
+            for (let i = 0; i < window.sessionStorage.length; i++) {
+                const key = window.sessionStorage.key(i);
+                const val = window.sessionStorage.getItem(key);
+
+                list.innerHTML += `<li>${key}: ${val}</li>`;
+            }
+        }
+
+        function add() {
+            window.sessionStorage[Math.ceil(Math.random() * 1000)] = Math.random();
+            show();
+        }
+
+        function removeFirst() {
+            if (window.sessionStorage.length === 0) {
+                return;
+            }
+
+            window.sessionStorage.removeItem(window.sessionStorage.key(0));
+            show();
+        }
+
+        function removeAll() {
+            window.sessionStorage.clear();
+            show();
+        }
+    </script>
+</body>
+</html>
