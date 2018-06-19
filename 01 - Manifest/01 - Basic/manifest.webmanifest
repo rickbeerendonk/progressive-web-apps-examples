@@ -1,0 +1,8 @@
+{
+    "name": "Basic Manifest App",
+    "description": "This app demonstrates the use of a basic manifest.",
+    "icons": [{
+      "src": "icon-192.png",
+      "sizes": "192x192"
+    }]
+  }
