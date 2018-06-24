@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Notifications - Availability</title>
+    <title>Notifications - Request Permission</title>
 </head>
 <body>
     <script>
-        if (window.Notification) {
-            document.writeln('Notification is available in this browser.');
-        } else {
-            document.writeln('No Notification support in this browser.');
+        if (Notification) {
+            Notification.requestPermission(function (status) {
+                document.writeln(`Notification permission status: ${status}`);
+            });
         }
     </script>
 </body>
+
 </html>
