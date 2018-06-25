@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fetch - Get</title>
+    <title>Fetch - Get - Async Await</title>
 </head>
 
 <body>
@@ -17,25 +17,26 @@
     <script>
         const loadingElem = document.querySelector('div');
         loadingElem.hidden = false;
-        fetch('data.json')
-            .then(response => {
+        (async function () {
+            try {
+                const response = await fetch('data.json');
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
-                return response.json();
-            })
-            .then(json => { 
+
+                const json = await response.json();
                 const headerElem = document.querySelector('h1');
                 headerElem.innerText = json.caption;
                 headerElem.hidden = false;
-            })
-            .catch(error => {
+            }
+            catch (error) {
                 console.error(error.message);
                 alert(error.message);
-            })
-            .finally(() => {
+            }
+            finally {
                 loadingElem.hidden = true;
-            });
+            }
+        })();
     </script>
 </body>
 
