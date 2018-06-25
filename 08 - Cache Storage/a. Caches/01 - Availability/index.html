@@ -6,19 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cache - Open</title>
+    <title>Cache Storage - Caches - Availability</title>
 </head>
 <body>
     <script>
         if (window.caches) {
-            const cacheName = 'cache 1';
-            caches.open(cacheName)
-            .then(cache => {
-                console.log(`Cache "${cacheName}" succesfully opened.`);
-            })
-            .catch((error) => {
-                console.log(`Cache "${cacheName}" could not be opened: ${error.message}.`);
-            });
+            document.writeln('Caches are available in this browser.');
+        } else {
+            document.writeln('No caches are support in this browser.');
         }
     </script>
 </body>
