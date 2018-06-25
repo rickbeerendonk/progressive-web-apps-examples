@@ -10,7 +10,7 @@
 </head>
 <body>
     <script>
-        if (window.Notification) {
+        if ('Notification' in window) {
             document.writeln('Notification is available in this browser.');
         } else {
             document.writeln('No Notification support in this browser.');
