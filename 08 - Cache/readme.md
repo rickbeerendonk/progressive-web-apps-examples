@@ -1,5 +1,7 @@
 # Cache
 
+Cache is an asynchronous version of local storage, hence can be used within service workers.
+
 ## Specification
 
 * https://w3c.github.io/ServiceWorker/#cache
