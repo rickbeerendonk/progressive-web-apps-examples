@@ -16,11 +16,12 @@
 			const cacheName = 'cache 1';
 			const url = 'players.json';
 
-			fetch(url)
-				.then(response => {
-					// Create or open cache
-					caches.open(cacheName)
-						.then(cache => {
+			// Create or open cache
+			caches.open(cacheName)
+				.then(cache => {
+					// Fetch data
+					fetch(url)
+						.then(response => {
 							// Add fetch result to cache
 							cache.put(url, response.clone());
 							return response;
