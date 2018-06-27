@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Cache Storage - Cache - Put</title>
+	<title>Cache Storage - Cache - Add</title>
 </head>
 
 <body>
@@ -19,12 +19,8 @@
 			// Create or open cache
 			caches.open(cacheName)
 				.then(cache => {
-					// Fetch data
-					fetch(url)
-						.then(response => {
-							// Add fetch result to cache
-							cache.put(url, response.clone());
-						});
+					// Fetch data & add fetch result to cache
+					cache.add(url);
 				});
 		}
 	</script>
