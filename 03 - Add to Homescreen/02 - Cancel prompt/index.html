@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add to Homescreen - Cancel prompt</title>
+
+    <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+    <h1>Add to Homescreen</h1>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Service worker should be in the root to work for the whole site:
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Registration of the service worker succeeded!');
+                })
+                .catch(error => {
+                    console.log('Registration of the service worker failed: ', error);
+                });
+        } else {
+            document.writeln('No service worker support in this browser.');
+        }
+
+        window.addEventListener('beforeinstallprompt', function (event) {
+            // Don't show the install prompt to the user.
+            event.preventDefault();
+            return false;
+        });
+    </script>
+</body>
+
+</html>
