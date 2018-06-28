@@ -15,6 +15,8 @@
 <body>
     <h1>Add to Homescreen</h1>
 
+    <button id="install" disabled>Install</button>
+
     <script>
         if ('serviceWorker' in navigator) {
             // Service worker should be in the root to work for the whole site:
@@ -29,15 +31,31 @@
             document.writeln('No service worker support in this browser.');
         }
 
+        const installButton = document.querySelector('#install');
+        let installPromptEvent;
+
         window.addEventListener('beforeinstallprompt', function (event) {
-            event.userChoice.then(function (result) {
-                console.log(result.outcome);
-                if (result.outcome == 'dismissed') {
-                    // Send to analytics
+            // Save the event to use later
+            installPromptEvent = event;
+            // Enable the button
+            installButton.disabled = false;
+        });
+
+        installButton.addEventListener('click', () => {
+            // Disable the button
+            installButton.disabled = true;
+            // Show the add to home screen dialog
+            installPromptEvent.prompt();
+            // Wait for the user to respond to the prompt
+            installPromptEvent.userChoice.then((choice) => {
+                if (choice.outcome === 'accepted') {
+                    //
                 }
                 else {
-                    // Send to analytics
+                    //
                 }
+                // Clear the saved prompt, because it can't be used again
+                installPromptEvent = null;
             });
         });
     </script>

@@ -1,0 +1,16 @@
+{
+  "name": "Add to Homescreen App",
+  "short_name": "Homescreen App",
+  "description": "This app demonstrates the use of Add To Homescreen.",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d676ff",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen"
+}

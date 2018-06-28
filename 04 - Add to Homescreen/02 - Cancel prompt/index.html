@@ -30,7 +30,7 @@
         }
 
         window.addEventListener('beforeinstallprompt', function (event) {
-            // Don't show the install prompt to the user.
+            // Don't show the install prompt to the user (Chrome < 68)
             event.preventDefault();
             return false;
         });
