@@ -6,7 +6,7 @@
 // 2. Uncomment the last line in the service worker file.
 // 3. Run the website again and observe the update.
 
- console.log('-- Service Worker updated file --');
+// console.log('-- Service Worker updated file --');
 
 self.addEventListener('install', event => {
   console.log('[install] Skip waiting for the new ServiceWorker.');
