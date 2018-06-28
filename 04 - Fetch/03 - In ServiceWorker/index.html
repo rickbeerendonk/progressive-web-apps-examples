@@ -32,30 +32,29 @@
     </script>
 
     <script>
-        const images = [
-            'img/tulips.png',
-            'img/hyacinth.png',
-            'img/narcissus.png'
-        ];
+        (async () => {
+            const response = await fetch('flowers.json');
+            const images = await response.json();
 
-        let currentImage = 0;
+            let currentImage = 0;
 
-        function showImage() {
-            const imgElem = document.getElementById('flower');
-            imgElem.src = images[currentImage];
-        }
-
-        // Show first image
-        showImage();
-
-        document.querySelector('#change').addEventListener('click', event => {
-            currentImage++;
-            if (currentImage >= images.length) {
-                currentImage = 0;
+            function showImage() {
+                const imgElem = document.getElementById('flower');
+                imgElem.src = images[currentImage];
             }
 
+            // Show first image
             showImage();
-        });
+
+            document.querySelector('#change').addEventListener('click', event => {
+                currentImage++;
+                if (currentImage >= images.length) {
+                    currentImage = 0;
+                }
+
+                showImage();
+            });
+        })();
     </script>
 </body>
 
