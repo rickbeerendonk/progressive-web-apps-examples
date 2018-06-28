@@ -1,0 +1,15 @@
+{
+  "short_name": "Typical App",
+  "name": "Typical Manifest App",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#ffffff",
+  "theme_color": "#d676ff",
+  "display": "standalone"
+}
