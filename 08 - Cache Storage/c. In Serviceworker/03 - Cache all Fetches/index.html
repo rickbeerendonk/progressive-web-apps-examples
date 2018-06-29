@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cache Storage - In ServiceWorker - Cache all Fetches</title>
+</head>
+
+<body>
+    <h1>Flowers</h1>
+
+    <img id="flower">
+    <br>
+    <button id="change">Change</button>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Registration of the service worker succeeded!');
+                })
+                .catch(error => {
+                    console.log('Registration of the service worker failed: ', error);
+                });
+        } else {
+            document.writeln('No service worker support in this browser.');
+        }
+    </script>
+
+    <script>
+        (async () => {
+            const response = await fetch('flowers.json');
+            const images = await response.json();
+
+            let currentImage = 0;
+
+            function showImage() {
+                const imgElem = document.getElementById('flower');
+                imgElem.src = images[currentImage];
+            }
+
+            // Show first image
+            showImage();
+
+            document.querySelector('#change').addEventListener('click', event => {
+                currentImage++;
+                if (currentImage >= images.length) {
+                    currentImage = 0;
+                }
+
+                showImage();
+            });
+        })();
+    </script>
+</body>
+
+</html>
