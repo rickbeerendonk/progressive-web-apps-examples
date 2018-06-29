@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>IndexedDB - Database - onVersionChange</title>
+    <title>IndexedDB - Object Store - Create</title>
 </head>
 <body>
     <script>
@@ -15,18 +15,18 @@
         // Create database
 
         const request1 = window.indexedDB.open(dbname, 1);
-        request1.onsuccess = function (e) {
-            // Close database
-            this.result.close();
-        };
-        
-        // Upgrade database
+        request1.onupgradeneeded = function (event) {
+            // Create dabase variable
+            const db = this.result;
+            // Create Object Stores
+            db.createObjectStore('players', { keyPath: 'name' });
+            db.createObjectStore('tournaments', { autoIncrement: 'true' });
+            // Log names of the Object Stores
+            console.log('Object stores created:', JSON.stringify(db.objectStoreNames));
 
-        const request2 = window.indexedDB.open(dbname, 2);
-        request2.onupgradeneeded = function (e) {
-            document.writeln(`Database upgraded from version ${e.oldVersion} to version ${e.newVersion}.`);
+            //debugger;
         };
-        request2.onsuccess = function (e) {
+        request1.onsuccess = function (event) {
             // Close database
             this.result.close();
             // Delete database
