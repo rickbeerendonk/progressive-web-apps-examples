@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IndexedDB - Object Store - Data Operations</title>
+</head>
+
+<body>
+    <script>
+        const dbname = 'test_database_upgrade';
+
+        // Create database
+
+        const request1 = window.indexedDB.open(dbname, 1);
+        request1.onupgradeneeded = function (event) {
+            // Create dabase variable
+            const db = this.result;
+            // Create Object Stores
+            let players = db.createObjectStore('players', { keyPath: 'name' });
+            let grandslams = db.createObjectStore('grandslams', { autoIncrement: 'true' });
+            // Create Index
+            players.createIndex('year', 'year', { unique: false });
+
+            //debugger;
+        };
+        request1.onsuccess = function (event) {
+            // Start a new transaction
+            let db = this.result;
+
+            let tx1 = db.transaction(['players'], 'readwrite');
+            let players = tx1.objectStore('players');
+
+            // Add some data
+            players.add({ name: 'Rafael Nadal', year: 1986, grandslamsTitles: 16 });
+            players.add({ name: 'Roger Federer', year: 1981, grandslamsTitles: 20 });
+            players.add({ name: 'Serena Williams', year: 1981, grandslamsTitles: 23 });
+            players.add({ name: 'Lleyton Hewitt', year: 1981, grandslamsTitles: 2 });
+            console.log('Players added');
+
+            // Update data
+            players.put({ name: 'Rafael Nadal', year: 1986, grandslamsTitles: 17 });
+            console.log('Player updated');
+
+            // Delete data
+            players.delete('Lleyton Hewitt');
+            console.log('Player deleted');
+
+            let tx2 = db.transaction('players', 'readonly');
+            let players2 = tx2.objectStore('players');
+            let index = players2.index('year');
+
+            // Get
+            let player = players2.get('Rafael Nadal');
+            player.onsuccess = function () {
+                console.log(JSON.stringify(player.result));
+            }
+
+            // Query the data
+            let players1981 = index.get([1981]);
+
+            players1981.onsuccess = function () {
+                console.log('Players born in 1981: ', JSON.stringify(players1981.result));
+            };
+
+            // Close the db when the transaction is done
+            db.close();
+            // Delete database
+            //window.indexedDB.deleteDatabase(dbname);
+        };
+    </script>
+</body>
+
+</html>
