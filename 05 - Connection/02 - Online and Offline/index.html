@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Page Visibility</title>
+  <title>Connection Online and Offline</title>
   <script>
     function addAction(action) {
       var list = document.getElementById('list');
@@ -16,18 +16,21 @@
       list.appendChild(li)
     }
 
-    function handleVisibilityChange(e) {
-      addAction(document.visibilityState);
+    function handleOffline() {
+      addAction("Offline");
+    }
+
+    function handleOnline() {
+      addAction("Online");
     }
 
     function init() {
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-      addAction(document.hidden ? "hidden" : "visible");
+      addAction(navigator.onLine ? "Online" : "Offline");
     }
   </script>
 </head>
 
-<body onload="init()">
+<body onload="init()" ononline="handleOnline()" onoffline="handleOffline()">
   <ul id="list"></ul>
 </body>
 
