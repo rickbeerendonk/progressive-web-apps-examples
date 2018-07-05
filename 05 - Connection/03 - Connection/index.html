@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- Mozilla Public License Version 2.0 -->
+<!-- Copyright © 2018 Rick Beerendonk -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Connection - Connection Info</title>
+  <script>
+    function showConnectionInfo() {
+      const connectionInfoElem = document.getElementById('connectionInfo');
+      connectionInfoElem.innerHTML = `
+        <div><b>Downlink:</b> ${navigator.connection.downlink}</div>
+        <div><b>Downlink max.:</b> ${navigator.connection.downlinkMax}</div>
+        <div><b>Type:</b> ${navigator.connection.type}</div>
+        <div><b>Effective Type:</b> ${navigator.connection.effectiveType}</div>
+        <div><b>Round-trip Time:</b> ${navigator.connection.rtt}</div>
+      `;
+    }
+
+    function init() {
+      showConnectionInfo();
+
+      navigator.connection.onchange = showConnectionInfo;
+    }
+  </script>
+</head>
+
+<body onload="init()">
+  <div id="connectionInfo"></div>
+</body>
+
+</html>
