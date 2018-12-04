@@ -62,6 +62,11 @@ navigator.serviceWorker.register('sw.js')
     })
 ```
 
+## Debugging
+
+* Chrome: [chrome://serviceworker-internals/](chrome://serviceworker-internals/)
+
+
 ---
 
 Copyright © 2018 Rick Beerendonk
