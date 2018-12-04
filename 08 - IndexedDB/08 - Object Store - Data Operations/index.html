@@ -61,7 +61,7 @@
             }
 
             // Query the data
-            let players1981 = index.get([1981]);
+            let players1981 = index.getAll(1981);
 
             players1981.onsuccess = function () {
                 console.log('Players born in 1981: ', JSON.stringify(players1981.result));
