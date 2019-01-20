@@ -16,6 +16,10 @@ A cache is managed by the author. Creating, updating, expiration and deletion is
 
 * [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Cache)
 
----
+## License
+
+European Union Public Licence version 1.2
+
+## Copyright
 
 Copyright © 2018 Rick Beerendonk

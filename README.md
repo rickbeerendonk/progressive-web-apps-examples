@@ -2,10 +2,10 @@
 
 Examples for Progressive Web Apps (PWA)
 
-# Licence
+## Licence
 
-Mozilla Public License Version 2.0
+European Union Public Licence version 1.2
 
----
+## Copyright
 
 Copyright © 2018-2019 Rick Beerendonk

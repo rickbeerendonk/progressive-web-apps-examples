@@ -24,6 +24,10 @@ if (window.localStorage) {
 
 * [Enable and disable local and session storage](https://mid.as/kb/article/00103)
 
----
+## License
+
+European Union Public Licence version 1.2
+
+## Copyright
 
 Copyright © 2018 Rick Beerendonk

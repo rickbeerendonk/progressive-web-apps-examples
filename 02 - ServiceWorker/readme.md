@@ -67,6 +67,10 @@ navigator.serviceWorker.register('sw.js')
 * Chrome: [chrome://serviceworker-internals/](chrome://serviceworker-internals/)
 
 
----
+## License
+
+European Union Public Licence version 1.2
+
+## Copyright
 
 Copyright © 2018 Rick Beerendonk
