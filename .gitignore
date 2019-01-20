@@ -13,16 +13,10 @@ node_modules/
 npm-debug.log
 
 #################
-## bower
+## ESLint
 #################
 
-bower_components/
-
-#################
-## zeit next
-#################
-
-.next/
+.eslintcache
 
 #################
 ## Other

@@ -2,42 +2,52 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Storage - Session Storage - Errors</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        // Disable sessionStorage in the browser before
-        // chrome://settings/content/cookies
+      // Disable sessionStorage in the browser before
+      // chrome://settings/content/cookies
 
-        // Try to set a value:
-        try {
-            window.sessionStorage.prop1 = 'This should fail';
-            document.writeln('Session Storage is -not- disabled in your browser: <br><ul>');
-            document.writeln('<li>Chrome: Browse to <em>chrome://settings/content/cookies</em> and disable cookies (and storage).</li>');
-            document.writeln('<li>Firefox: Browse to <em>about:config</em> and disable <em>dom.storage.enabled</em> or set <em>dom.storage.default_quota</em> to 0.</li>');
-            document.writeln('</ul>');
-        } catch (error) {
-            switch (error.name) {
-                case 'QuotaExceededError':
-                    document.writeln(`sessionStorage is full: ${error}`);
-                    break;
-                case 'SecurityError':
-                    // Chrome: When session storage is disabled
-                    document.writeln(`sessionStorage is disabled by the user: <br> ${error}`);
-                    break;
-                case 'TypeError':
-                    // Firefox: When session storage is disabled
-                    document.writeln(`sessionStorage is disabled by the user: <br> ${error}`);
-                    break;
-                default:
-                    document.writeln(error);
-                    break;
-            }
+      // Try to set a value:
+      try {
+        window.sessionStorage.prop1 = 'This should fail';
+        document.writeln(
+          'Session Storage is -not- disabled in your browser: <br><ul>'
+        );
+        document.writeln(
+          '<li>Chrome: Browse to <em>chrome://settings/content/cookies</em> and disable cookies (and storage).</li>'
+        );
+        document.writeln(
+          '<li>Firefox: Browse to <em>about:config</em> and disable <em>dom.storage.enabled</em> or set <em>dom.storage.default_quota</em> to 0.</li>'
+        );
+        document.writeln('</ul>');
+      } catch (error) {
+        switch (error.name) {
+          case 'QuotaExceededError':
+            document.writeln(`sessionStorage is full: ${error}`);
+            break;
+          case 'SecurityError':
+            // Chrome: When session storage is disabled
+            document.writeln(
+              `sessionStorage is disabled by the user: <br> ${error}`
+            );
+            break;
+          case 'TypeError':
+            // Firefox: When session storage is disabled
+            document.writeln(
+              `sessionStorage is disabled by the user: <br> ${error}`
+            );
+            break;
+          default:
+            document.writeln(error);
+            break;
         }
+      }
     </script>
-</body>
+  </body>
 </html>

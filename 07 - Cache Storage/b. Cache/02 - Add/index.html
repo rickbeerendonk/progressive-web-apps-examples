@@ -2,28 +2,25 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cache Storage - Cache - Add</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Cache Storage - Cache - Add</title>
-</head>
+  <body>
+    <script>
+      if (window.caches) {
+        const cacheName = 'cache 1';
+        const url = 'players.json';
 
-<body>
-	<script>
-		if (window.caches) {
-			const cacheName = 'cache 1';
-			const url = 'players.json';
-
-			// Create or open cache
-			caches.open(cacheName)
-				.then(cache => {
-					// Fetch data & add fetch result to cache
-					cache.add(url);
-				});
-		}
-	</script>
-</body>
-
+        // Create or open cache
+        caches.open(cacheName).then(cache => {
+          // Fetch data & add fetch result to cache
+          cache.add(url);
+        });
+      }
+    </script>
+  </body>
 </html>

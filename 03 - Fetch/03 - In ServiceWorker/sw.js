@@ -5,10 +5,12 @@ self.addEventListener('fetch', function(event) {
   console.log('[fetch] Handling ', event.request.url);
 
   event.respondWith(
-    fetch(event.request).then(function(response) {
+    fetch(event.request)
+      .then(function(response) {
         console.log('[fetch] Response:', response);
         return response;
-      }).catch(function(error) {
+      })
+      .catch(function(error) {
         console.error('[fetch] Failed:', error);
         throw error;
       })

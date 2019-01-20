@@ -2,36 +2,29 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cache Storage - Cache - Match All</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Cache Storage - Cache - Match All</title>
-</head>
+  <body>
+    <script>
+      if (window.caches) {
+        const cacheName = 'cache 1';
 
-<body>
-	<script>
-		if (window.caches) {
-			const cacheName = 'cache 1';
-
-			// Create or open cache
-			caches.open(cacheName)
-				.then(cache => {
-					// Fetch data & add fetch result to cache
-					cache.addAll([
-						'grandslams.json',
-						'players.json'
-					]).then(() => {
-						// Match one item in the cache
-						cache.matchAll('grandslams.json')
-							.then(response => {
-								console.log(response);
-							});
-					});
-				});
-		}
-	</script>
-</body>
-
+        // Create or open cache
+        caches.open(cacheName).then(cache => {
+          // Fetch data & add fetch result to cache
+          cache.addAll(['grandslams.json', 'players.json']).then(() => {
+            // Match one item in the cache
+            cache.matchAll('grandslams.json').then(response => {
+              console.log(response);
+            });
+          });
+        });
+      }
+    </script>
+  </body>
 </html>

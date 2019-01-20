@@ -2,35 +2,32 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Cache Storage - Caches - Keys</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        if (window.caches) {
-            const promise1 = caches.open('cache 1');
-            const promise2 = caches.open('cache 2');
-            const promise3 = caches.open('cache 3');
-            
-            Promise.all([promise1, promise2, promise3]);
+      if (window.caches) {
+        const promise1 = caches.open('cache 1');
+        const promise2 = caches.open('cache 2');
+        const promise3 = caches.open('cache 3');
 
-            caches.keys()
-            .then(names => {
-                names.forEach(name => {
-                    console.log(name);
-                })
-            });
+        Promise.all([promise1, promise2, promise3]);
 
-            caches.delete('cache 3');
-            caches.delete('cache 2');
-            caches.delete('cache 1');
-        }
+        caches.keys().then(names => {
+          names.forEach(name => {
+            console.log(name);
+          });
+        });
+
+        caches.delete('cache 3');
+        caches.delete('cache 2');
+        caches.delete('cache 1');
+      }
     </script>
-</body>
-
+  </body>
 </html>

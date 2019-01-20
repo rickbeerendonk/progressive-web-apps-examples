@@ -2,38 +2,44 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>IndexedDB - Database - Initialize</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        const dbname = 'test_database_onVersionChange';
+      const dbname = 'test_database_onVersionChange';
 
-        // Create database
+      // Create database
 
-        const request1 = window.indexedDB.open(dbname, 1);
-        request1.onsuccess = function (e) {
-            // Close database
-            this.result.close();
-        };
-        
+      const request1 = window.indexedDB.open(dbname, 1);
+      request1.onsuccess = function(e) {
+        // Close database
+        this.result.close();
+      };
+
+      // Upgrade database
+
+      const request2 = window.indexedDB.open(dbname, 2);
+      request2.onupgradeneeded = function(e) {
+        document.writeln(
+          `Database will upgrade from version ${e.oldVersion} to version ${
+            e.newVersion
+          }.`
+        );
         // Upgrade database
-
-        const request2 = window.indexedDB.open(dbname, 2);
-        request2.onupgradeneeded = function (e) {
-            document.writeln(`Database will upgrade from version ${e.oldVersion} to version ${e.newVersion}.`);
-            // Upgrade database
-            document.writeln('The update commands can be defined in the onupgradeneeded event.');
-        };
-        request2.onsuccess = function (e) {
-            // Close database
-            this.result.close();
-            // Delete database
-            window.indexedDB.deleteDatabase(dbname);
-        };
+        document.writeln(
+          'The update commands can be defined in the onupgradeneeded event.'
+        );
+      };
+      request2.onsuccess = function(e) {
+        // Close database
+        this.result.close();
+        // Delete database
+        window.indexedDB.deleteDatabase(dbname);
+      };
     </script>
-</body>
+  </body>
 </html>

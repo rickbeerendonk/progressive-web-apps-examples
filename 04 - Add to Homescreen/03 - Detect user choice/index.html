@@ -2,45 +2,43 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Add to Homescreen - Detect user choice</title>
 
-    <link rel="manifest" href="/manifest.json">
-</head>
+    <link rel="manifest" href="/manifest.json" />
+  </head>
 
-<body>
+  <body>
     <h1>Add to Homescreen</h1>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            // Service worker should be in the root to work for the whole site:
-            navigator.serviceWorker.register('sw.js')
-                .then(registration => {
-                    console.log('Registration of the service worker succeeded!');
-                })
-                .catch(error => {
-                    console.log('Registration of the service worker failed: ', error);
-                });
-        } else {
-            document.writeln('No service worker support in this browser.');
-        }
+      if ('serviceWorker' in navigator) {
+        // Service worker should be in the root to work for the whole site:
+        navigator.serviceWorker
+          .register('sw.js')
+          .then(registration => {
+            console.log('Registration of the service worker succeeded!');
+          })
+          .catch(error => {
+            console.log('Registration of the service worker failed: ', error);
+          });
+      } else {
+        document.writeln('No service worker support in this browser.');
+      }
 
-        window.addEventListener('beforeinstallprompt', function (event) {
-            event.userChoice.then(function (result) {
-                console.log(result.outcome);
-                if (result.outcome === 'dismissed') {
-                    // Send to analytics
-                }
-                else /* 'accepted' */ {
-                    // Send to analytics
-                }
-            });
+      window.addEventListener('beforeinstallprompt', function(event) {
+        event.userChoice.then(function(result) {
+          console.log(result.outcome);
+          if (result.outcome === 'dismissed') {
+            // Send to analytics
+          } /* 'accepted' */ else {
+            // Send to analytics
+          }
         });
+      });
     </script>
-</body>
-
+  </body>
 </html>

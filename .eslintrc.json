@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "serviceworker": true
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "no-console": 0,
+    "no-debugger": 1,
+    "semi": [2, "always"]
+  }
+}

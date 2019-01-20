@@ -2,42 +2,38 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fetch - Get - Async Await</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1 hidden></h1>
     <div>Loading...</div>
 
     <script>
-        const loadingElem = document.querySelector('div');
-        loadingElem.hidden = false;
-        (async function () {
-            try {
-                const response = await fetch('data.json');
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
+      const loadingElem = document.querySelector('div');
+      loadingElem.hidden = false;
+      (async function() {
+        try {
+          const response = await fetch('data.json');
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
 
-                const json = await response.json();
-                const headerElem = document.querySelector('h1');
-                headerElem.innerText = json.caption;
-                headerElem.hidden = false;
-            }
-            catch (error) {
-                console.error(error.message);
-                alert(error.message);
-            }
-            finally {
-                loadingElem.hidden = true;
-            }
-        })();
+          const json = await response.json();
+          const headerElem = document.querySelector('h1');
+          headerElem.innerText = json.caption;
+          headerElem.hidden = false;
+        } catch (error) {
+          console.error(error.message);
+          alert(error.message);
+        } finally {
+          loadingElem.hidden = true;
+        }
+      })();
     </script>
-</body>
-
+  </body>
 </html>

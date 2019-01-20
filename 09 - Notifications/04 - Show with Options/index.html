@@ -2,59 +2,59 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Notifications - Show with Options</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        if ('serviceWorker' in navigator) {
-            // Service worker should be in the root to work for the whole site:
-            navigator.serviceWorker.register('sw.js')
-                .then(registration => {
-                    console.log('Registration of the service worker succeeded!');
-                })
-                .catch(error => {
-                    console.log('Registration of the service worker failed: ', error);
-                });
-        } else {
-            document.writeln('No service worker support in this browser.');
+      if ('serviceWorker' in navigator) {
+        // Service worker should be in the root to work for the whole site:
+        navigator.serviceWorker
+          .register('sw.js')
+          .then(registration => {
+            console.log('Registration of the service worker succeeded!');
+          })
+          .catch(error => {
+            console.log('Registration of the service worker failed: ', error);
+          });
+      } else {
+        document.writeln('No service worker support in this browser.');
+      }
+
+      if (Notification) {
+        switch (Notification.permission) {
+          case 'granted':
+            document.writeln('Notification permission already granted.');
+            break;
+          case 'denied':
+            document.writeln('Notification permission already denied.');
+            break;
+          default:
+            Notification.requestPermission(function(status) {
+              document.writeln(
+                `Notification permission requested and received: ${status}.`
+              );
+            });
+            break;
         }
 
-        if (Notification) {
-            switch (Notification.permission) {
-                case 'granted':
-                    document.writeln('Notification permission already granted.');
-                    break;
-                case 'denied':
-                    document.writeln('Notification permission already denied.');
-                    break;
-                default:
-                    Notification.requestPermission(function (status) {
-                        document.writeln(`Notification permission requested and received: ${status}.`);
-                    });
-                    break;
-            }
+        if (Notification.permission === 'granted') {
+          navigator.serviceWorker.getRegistration().then(function(reg) {
+            let options = {
+              body: 'This is the notification body',
+              icon: 'icon-192.png',
+              vibrate: [100, 50, 100],
+              data: { primaryKey: 1 } // To identify notification later
+            };
 
-            if (Notification.permission === 'granted') {
-                navigator.serviceWorker.getRegistration()
-                    .then(function (reg) {
-                        let options = {
-                            body: 'This is the notification body',
-                            icon: 'icon-192.png',
-                            vibrate: [100, 50, 100],
-                            data: { primaryKey: 1 } // To identify notification later
-                        };
-
-                        reg.showNotification('My Notification!', options);
-                    });
-            }
+            reg.showNotification('My Notification!', options);
+          });
         }
+      }
     </script>
-</body>
-
+  </body>
 </html>

@@ -2,38 +2,38 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>IndexedDB - Factory - Open and Delete Database</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        const dbname = 'test_database_delete';
+      const dbname = 'test_database_delete';
 
-        // Create/open and close database
+      // Create/open and close database
 
-        const openRequest = window.indexedDB.open(dbname);
-        openRequest.onsuccess = function (e) {
-            database = this.result;
-            document.writeln(`Database <em>${database.name}</em> created/opened successfully.<br>`);
+      const openRequest = window.indexedDB.open(dbname);
+      openRequest.onsuccess = function(e) {
+        database = this.result;
+        document.writeln(
+          `Database <em>${database.name}</em> created/opened successfully.<br>`
+        );
 
-            database.close();
-        };
+        database.close();
+      };
 
-        // Delete database
+      // Delete database
 
-        const deleteRequest = window.indexedDB.deleteDatabase(dbname);
-        deleteRequest.onerror = function (event) {
-            document.writeln('Error deleting database.<br>');
-        };
-        deleteRequest.onsuccess = function (event) {
-            document.writeln('Database deleted successfully.<br>');
-        };
+      const deleteRequest = window.indexedDB.deleteDatabase(dbname);
+      deleteRequest.onerror = function(event) {
+        document.writeln('Error deleting database.<br>');
+      };
+      deleteRequest.onsuccess = function(event) {
+        document.writeln('Database deleted successfully.<br>');
+      };
     </script>
-</body>
-
+  </body>
 </html>

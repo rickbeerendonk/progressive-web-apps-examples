@@ -8,14 +8,14 @@
 
 // console.log('-- Service Worker updated file --');
 
-self.addEventListener('install', event => {
+self.addEventListener('install', () => {
   console.log('[install] Skip waiting for the new ServiceWorker.');
   self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
   console.log('[activate] Activating ServiceWorker.');
- 
+
   console.log('[activate] Claiming this ServiceWorker.');
   event.waitUntil(self.clients.claim());
 });

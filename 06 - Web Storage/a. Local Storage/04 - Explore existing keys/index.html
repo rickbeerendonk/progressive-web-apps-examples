@@ -2,27 +2,31 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Storage - Local Storage - Explore existing keys</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        if (!window.localStorage) {
-            document.writeln('No localStorage support in this browser.');
-        }
+      if (!window.localStorage) {
+        document.writeln('No localStorage support in this browser.');
+      }
 
-        // Randomly generate some keys:
-        for (let i = 0; i < 1 + Math.ceil(Math.random() * 3); i++) {
-            window.localStorage[Math.ceil(Math.random() * 1000)] = Math.random();
-        }
+      // Randomly generate some keys:
+      for (let i = 0; i < 1 + Math.ceil(Math.random() * 3); i++) {
+        window.localStorage[Math.ceil(Math.random() * 1000)] = Math.random();
+      }
 
-        // Retreive all the keys in the store and show their value:
-        for (let i = 0; i < window.localStorage.length; i++) {
-            document.writeln(`Key "${window.localStorage.key(i)}" has value ${window.localStorage[window.localStorage.key(i)]} <br>`);
-        }
+      // Retreive all the keys in the store and show their value:
+      for (let i = 0; i < window.localStorage.length; i++) {
+        document.writeln(
+          `Key "${window.localStorage.key(i)}" has value ${
+            window.localStorage[window.localStorage.key(i)]
+          } <br>`
+        );
+      }
     </script>
-</body>
+  </body>
 </html>

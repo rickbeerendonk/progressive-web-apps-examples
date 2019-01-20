@@ -2,24 +2,27 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Cache Storage - Caches - Open</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        if (window.caches) {
-            const cacheName = 'cache 1';
-            caches.open(cacheName)
-            .then(cache => {
-                console.log(`Cache "${cacheName}" succesfully opened.`);
-            })
-            .catch((error) => {
-                console.log(`Cache "${cacheName}" could not be opened: ${error.message}.`);
-            });
-        }
+      if (window.caches) {
+        const cacheName = 'cache 1';
+        caches
+          .open(cacheName)
+          .then(cache => {
+            console.log(`Cache "${cacheName}" succesfully opened.`);
+          })
+          .catch(error => {
+            console.log(
+              `Cache "${cacheName}" could not be opened: ${error.message}.`
+            );
+          });
+      }
     </script>
-</body>
+  </body>
 </html>

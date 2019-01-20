@@ -2,33 +2,31 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2016 Rick Beerendonk -->
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Connection - Page Visibility</title>
+    <script>
+      function addAction(action) {
+        var list = document.getElementById('list');
+        var li = document.createElement('li');
+        li.innerText = action;
+        list.appendChild(li);
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Connection - Page Visibility</title>
-  <script>
-    function addAction(action) {
-      var list = document.getElementById('list');
-      var li = document.createElement('li');
-      li.innerText = action;
-      list.appendChild(li)
-    }
+      function handleVisibilityChange(e) {
+        addAction(document.visibilityState);
+      }
 
-    function handleVisibilityChange(e) {
-      addAction(document.visibilityState);
-    }
+      function init() {
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        addAction(document.hidden ? 'hidden' : 'visible');
+      }
+    </script>
+  </head>
 
-    function init() {
-      document.addEventListener("visibilitychange", handleVisibilityChange);
-      addAction(document.hidden ? "hidden" : "visible");
-    }
-  </script>
-</head>
-
-<body onload="init()">
-  <ul id="list"></ul>
-</body>
-
+  <body onload="init()">
+    <ul id="list"></ul>
+  </body>
 </html>

@@ -4,7 +4,11 @@
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     fetch(event.request)
-      .then(function(response) { return response; })
-      .catch(function(error) { throw error; })
+      .then(function(response) {
+        return response;
+      })
+      .catch(function(error) {
+        throw error;
+      })
   );
 });

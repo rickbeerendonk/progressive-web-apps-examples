@@ -2,29 +2,36 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Storage - Local Storage - Set and Get</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        if (!window.localStorage) {
-            document.writeln('No localStorage support in this browser.');
-        }
+      if (!window.localStorage) {
+        document.writeln('No localStorage support in this browser.');
+      }
 
-        // 1. Read and Write property with the dot notation:
-        window.localStorage.prop1 = 'This is the 1st value [dot notation, when property name is known design time]';
-        document.writeln(`prop1 value: ${window.localStorage.prop1} <br>`);
+      // 1. Read and Write property with the dot notation:
+      window.localStorage.prop1 =
+        'This is the 1st value [dot notation, when property name is known design time]';
+      document.writeln(`prop1 value: ${window.localStorage.prop1} <br>`);
 
-        // 2. Read and Write property with the bracket notation:
-        window.localStorage['prop2'] = 'This is the 2nd value [bracket notation, when property name is known runtime]';
-        document.writeln(`prop2 value: ${window.localStorage['prop2']} <br>`);
+      // 2. Read and Write property with the bracket notation:
+      window.localStorage['prop2'] =
+        'This is the 2nd value [bracket notation, when property name is known runtime]';
+      document.writeln(`prop2 value: ${window.localStorage['prop2']} <br>`);
 
-        // 3. Read and Write item with setItem and getItem methods:
-        window.localStorage.setItem('prop3', 'This is the 3rd value [getItem() and setItem()]');
-        document.writeln(`prop3 value: ${window.localStorage.getItem('prop3')} <br>`);
+      // 3. Read and Write item with setItem and getItem methods:
+      window.localStorage.setItem(
+        'prop3',
+        'This is the 3rd value [getItem() and setItem()]'
+      );
+      document.writeln(
+        `prop3 value: ${window.localStorage.getItem('prop3')} <br>`
+      );
     </script>
-</body>
+  </body>
 </html>

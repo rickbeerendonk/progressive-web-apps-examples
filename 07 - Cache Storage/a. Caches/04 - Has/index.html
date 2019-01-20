@@ -2,50 +2,43 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Cache Storage - Caches - Has</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        function cacheExists(cacheName) {
-            caches.has(cacheName)
-                .then(exists => {
-                    if (exists) {
-                        console.log(`Cache "${cacheName}" does exist.`);
-                    }
-                    else {
-                        console.log(`Cache "${cacheName}" does not exist.`);
-                    }
-                });
-        }
+      function cacheExists(cacheName) {
+        caches.has(cacheName).then(exists => {
+          if (exists) {
+            console.log(`Cache "${cacheName}" does exist.`);
+          } else {
+            console.log(`Cache "${cacheName}" does not exist.`);
+          }
+        });
+      }
 
-        if (window.caches) {
-            const cacheName = 'cache 1';
-            caches.open(cacheName)
-                .then(cache => {
-                    console.log(`Cache "${cacheName}" succesfully opened.`);
+      if (window.caches) {
+        const cacheName = 'cache 1';
+        caches.open(cacheName).then(cache => {
+          console.log(`Cache "${cacheName}" succesfully opened.`);
 
-                    cacheExists(cacheName);
+          cacheExists(cacheName);
 
-                    caches.delete(cacheName)
-                        .then(deleted => {
-                            if (deleted) {
-                                console.log(`Cache "${cacheName}" succesfully deleted.`);
-                            }
-                            else {
-                                console.log(`Cache "${cacheName}" couldn't be deleted.`);
-                            }
+          caches.delete(cacheName).then(deleted => {
+            if (deleted) {
+              console.log(`Cache "${cacheName}" succesfully deleted.`);
+            } else {
+              console.log(`Cache "${cacheName}" couldn't be deleted.`);
+            }
 
-                            cacheExists(cacheName);
-                        });
-                });
-        }
+            cacheExists(cacheName);
+          });
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>

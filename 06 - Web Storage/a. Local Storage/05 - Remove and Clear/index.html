@@ -2,53 +2,52 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Storage - Local Storage - Remove and Clear</title>
-</head>
-<body>
+  </head>
+  <body>
     <button onclick="add()">Add</button>
     <button onclick="removeFirst()">Remove First</button>
     <button onclick="removeAll()">Clear</button>
 
-    <ul id="list">
-    </ul>
+    <ul id="list"></ul>
 
     <script>
+      show();
+
+      function show() {
+        const list = document.getElementById('list');
+        list.innerHTML = '';
+
+        for (let i = 0; i < window.localStorage.length; i++) {
+          const key = window.localStorage.key(i);
+          const val = window.localStorage.getItem(key);
+
+          list.innerHTML += `<li>${key}: ${val}</li>`;
+        }
+      }
+
+      function add() {
+        window.localStorage[Math.ceil(Math.random() * 1000)] = Math.random();
         show();
+      }
 
-        function show() {
-            const list = document.getElementById('list');
-            list.innerHTML = '';
-
-            for (let i = 0; i < window.localStorage.length; i++) {
-                const key = window.localStorage.key(i);
-                const val = window.localStorage.getItem(key);
-
-                list.innerHTML += `<li>${key}: ${val}</li>`;
-            }
+      function removeFirst() {
+        if (window.localStorage.length === 0) {
+          return;
         }
 
-        function add() {
-            window.localStorage[Math.ceil(Math.random() * 1000)] = Math.random();
-            show();
-        }
+        window.localStorage.removeItem(window.localStorage.key(0));
+        show();
+      }
 
-        function removeFirst() {
-            if (window.localStorage.length === 0) {
-                return;
-            }
-
-            window.localStorage.removeItem(window.localStorage.key(0));
-            show();
-        }
-
-        function removeAll() {
-            window.localStorage.clear();
-            show();
-        }
+      function removeAll() {
+        window.localStorage.clear();
+        show();
+      }
     </script>
-</body>
+  </body>
 </html>

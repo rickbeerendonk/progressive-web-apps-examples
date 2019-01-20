@@ -2,63 +2,61 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Add to Homescreen - Detect user choice</title>
 
-    <link rel="manifest" href="/manifest.json">
-</head>
+    <link rel="manifest" href="/manifest.json" />
+  </head>
 
-<body>
+  <body>
     <h1>Add to Homescreen</h1>
 
     <button id="install" disabled>Install</button>
 
     <script>
-        if ('serviceWorker' in navigator) {
-            // Service worker should be in the root to work for the whole site:
-            navigator.serviceWorker.register('sw.js')
-                .then(registration => {
-                    console.log('Registration of the service worker succeeded!');
-                })
-                .catch(error => {
-                    console.log('Registration of the service worker failed: ', error);
-                });
-        } else {
-            document.writeln('No service worker support in this browser.');
-        }
+      if ('serviceWorker' in navigator) {
+        // Service worker should be in the root to work for the whole site:
+        navigator.serviceWorker
+          .register('sw.js')
+          .then(registration => {
+            console.log('Registration of the service worker succeeded!');
+          })
+          .catch(error => {
+            console.log('Registration of the service worker failed: ', error);
+          });
+      } else {
+        document.writeln('No service worker support in this browser.');
+      }
 
-        const installButton = document.querySelector('#install');
-        let installPromptEvent;
+      const installButton = document.querySelector('#install');
+      let installPromptEvent;
 
-        window.addEventListener('beforeinstallprompt', function (event) {
-            // Save the event to use later
-            installPromptEvent = event;
-            // Enable the button
-            installButton.disabled = false;
+      window.addEventListener('beforeinstallprompt', function(event) {
+        // Save the event to use later
+        installPromptEvent = event;
+        // Enable the button
+        installButton.disabled = false;
+      });
+
+      installButton.addEventListener('click', () => {
+        // Disable the button
+        installButton.disabled = true;
+        // Show the add to home screen dialog
+        installPromptEvent.prompt();
+        // Wait for the user to respond to the prompt
+        installPromptEvent.userChoice.then(choice => {
+          if (choice.outcome === 'accepted') {
+            //
+          } else {
+            //
+          }
+          // Clear the saved prompt, because it can't be used again
+          installPromptEvent = null;
         });
-
-        installButton.addEventListener('click', () => {
-            // Disable the button
-            installButton.disabled = true;
-            // Show the add to home screen dialog
-            installPromptEvent.prompt();
-            // Wait for the user to respond to the prompt
-            installPromptEvent.userChoice.then((choice) => {
-                if (choice.outcome === 'accepted') {
-                    //
-                }
-                else {
-                    //
-                }
-                // Clear the saved prompt, because it can't be used again
-                installPromptEvent = null;
-            });
-        });
+      });
     </script>
-</body>
-
+  </body>
 </html>

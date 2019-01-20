@@ -15,7 +15,23 @@
   "dependencies": {
     "http-server": "0.11.1"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run validate",
+      "pre-push": "npm run validate"
+    }
+  },
   "scripts": {
-    "openserver": "node ./node_modules/http-server/bin/http-server -c-1"
+    "eslint": "eslint . --ext .js,.jsx --cache",
+    "eslint-fix": "eslint . --ext .js,.jsx --cache --fix",
+    "openserver": "node ./node_modules/http-server/bin/http-server -c-1",
+    "prettier": "prettier --list-different '**/*.{json,js,html}'",
+    "prettier-fix": "prettier --write '**/*.{json,js,html}'",
+    "validate": "npm run eslint && npm run prettier"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "husky": "^1.3.1",
+    "prettier": "^1.16.0"
   }
 }

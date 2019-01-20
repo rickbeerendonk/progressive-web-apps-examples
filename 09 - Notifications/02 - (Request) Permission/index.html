@@ -2,32 +2,32 @@
 <!-- European Union Public License version 1.2 -->
 <!-- Copyright © 2018 Rick Beerendonk -->
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Notifications - (Request) Permission</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        if (Notification) {
-            switch (Notification.permission) {
-                case 'granted':
-                    document.writeln('Notification permission already granted.');
-                    break;
-                case 'denied':
-                    document.writeln('Notification permission already denied.');
-                    break;
-                default:
-                    Notification.requestPermission(function (status) {
-                        document.writeln(`Notification permission requested and received: ${status}.`);
-                    });
-                    break;
-            }
+      if (Notification) {
+        switch (Notification.permission) {
+          case 'granted':
+            document.writeln('Notification permission already granted.');
+            break;
+          case 'denied':
+            document.writeln('Notification permission already denied.');
+            break;
+          default:
+            Notification.requestPermission(function(status) {
+              document.writeln(
+                `Notification permission requested and received: ${status}.`
+              );
+            });
+            break;
         }
+      }
     </script>
-</body>
-
+  </body>
 </html>
