@@ -12,9 +12,6 @@
     "url": "https://github.com/rickbeerendonk/progressive-web-apps-examples/issues"
   },
   "homepage": "https://github.com/rickbeerendonk/progressive-web-apps-examples#readme",
-  "dependencies": {
-    "http-server": "0.11.1"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "npm run validate",
@@ -28,6 +25,9 @@
     "prettier": "prettier --list-different '**/*.{json,js,html}'",
     "prettier-fix": "prettier --write '**/*.{json,js,html}'",
     "validate": "npm run eslint && npm run prettier"
+  },
+  "dependencies": {
+    "http-server": "0.11.1"
   },
   "devDependencies": {
     "eslint": "^5.12.1",
