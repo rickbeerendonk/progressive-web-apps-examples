@@ -16,8 +16,6 @@
     <ul id="list"></ul>
 
     <script>
-      show();
-
       function show() {
         const list = document.getElementById('list');
         list.innerHTML = '';
@@ -29,6 +27,8 @@
           list.innerHTML += `<li>${key}: ${val}</li>`;
         }
       }
+
+      show();
 
       function add() {
         window.localStorage[Math.ceil(Math.random() * 1000)] = Math.random();
