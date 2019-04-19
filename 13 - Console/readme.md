@@ -1,6 +1,5 @@
 # Console
 
-
 ## Specification
 
 * https://console.spec.whatwg.org/
