@@ -61,6 +61,22 @@ openRequest.onsuccess = function (e) {
 };
 ```
 
+### Database
+
+#### Close
+
+#### Initialize
+
+#### Upgrade
+
+### Object Store
+
+#### Create
+
+#### Index - Create
+
+#### Data Operations
+
 ## License
 
 European Union Public Licence version 1.2
