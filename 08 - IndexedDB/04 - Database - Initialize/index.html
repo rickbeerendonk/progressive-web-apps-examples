@@ -7,20 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>IndexedDB - Database - Initialize</title>
+    <script src="index.js"></script>
   </head>
-  <body>
-    <script>
-      const dbname = 'test_database_initialize';
-      const request = window.indexedDB.open(dbname);
-      request.onupgradeneeded = function(e) {
-        document.writeln(`New database version: ${e.newVersion}.`);
-      };
-      request.onsuccess = function(e) {
-        // Close database
-        this.result.close();
-        // Delete database
-        window.indexedDB.deleteDatabase(dbname);
-      };
-    </script>
-  </body>
+  <body></body>
 </html>

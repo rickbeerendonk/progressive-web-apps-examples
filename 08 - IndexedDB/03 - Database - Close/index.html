@@ -7,32 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>IndexedDB - Database - Close</title>
+    <script src="index.js"></script>
   </head>
-  <body>
-    <script>
-      const dbname = 'test_database_open-and-close';
-      const request = window.indexedDB.open(dbname);
-      request.onsuccess = function(e) {
-        // this = request
-        const database = this.result;
-        document.writeln(
-          `Database <em>${database.name}</em> successfully opened (version: ${
-            database.version
-          }).<br>`
-        );
-
-        database.onclose = function(e) {
-          // new in v2.0
-          // Online fires if the connection closes abnormally.
-          debugger;
-          document.writeln(`Database ${database.name} closed.<br>`);
-        };
-
-        // Close normally: Doesn't fire onclose event.
-        // Returns immediately, but will close in a separate thread.
-        database.close();
-        document.writeln(`Database ${database.name} closing.<br>`);
-      };
-    </script>
-  </body>
+  <body></body>
 </html>
