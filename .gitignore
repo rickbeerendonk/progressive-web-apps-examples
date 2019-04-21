@@ -11,6 +11,14 @@ spec/
 
 node_modules/
 npm-debug.log
+package-lock.json
+
+#################
+## yarn
+#################
+
+yarn.lock
+yarn-error.log
 
 #################
 ## ESLint
