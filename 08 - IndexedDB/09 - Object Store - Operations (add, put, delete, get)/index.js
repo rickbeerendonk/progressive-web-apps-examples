@@ -26,7 +26,7 @@ request1.onsuccess = function(event) {
   let tx1 = db.transaction(['players'], 'readwrite');
   let players = tx1.objectStore('players');
 
-  // Add some data
+  // Object Store: Add
   players.add({ name: 'Rafael Nadal', year: 1986, grandslamsTitles: 16 });
   players.add({
     name: 'Roger Federer',
@@ -45,11 +45,11 @@ request1.onsuccess = function(event) {
   });
   document.writeln('Players added.<br />');
 
-  // Update data
+  // Object Store: Put (update data)
   players.put({ name: 'Rafael Nadal', year: 1986, grandslamsTitles: 17 });
   document.writeln('Player updated.<br />');
 
-  // Delete data
+  // Object Store: Delete
   players.delete('Lleyton Hewitt');
   document.writeln('Player deleted.<br />');
 
@@ -57,7 +57,7 @@ request1.onsuccess = function(event) {
   let players2 = tx2.objectStore('players');
   let index = players2.index('year');
 
-  // Get
+  // Object Store: Get
   let player = players2.get('Rafael Nadal');
   player.onsuccess = function() {
     document.writeln(
