@@ -16,9 +16,7 @@ request1.onsuccess = function() {
 const request2 = window.indexedDB.open(dbname, 2);
 request2.onupgradeneeded = function(e) {
   document.writeln(
-    `Database will upgrade from version ${e.oldVersion} to version ${
-      e.newVersion
-    }.`
+    `Database will upgrade from version ${e.oldVersion} to version ${e.newVersion}.`
   );
   // Upgrade database
   document.writeln(

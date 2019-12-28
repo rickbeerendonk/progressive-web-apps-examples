@@ -7,9 +7,7 @@ request.onsuccess = function() {
   // this = request
   const database = this.result;
   document.writeln(
-    `Database <em>${database.name}</em> successfully opened (version: ${
-      database.version
-    }).<br>`
+    `Database <em>${database.name}</em> successfully opened (version: ${database.version}).<br>`
   );
 
   database.onclose = function() {
