@@ -17,7 +17,4 @@ console.table({
 
 // Array
 console.table([111, 222, 333]);
-console.table([
-  [111, 222, 333],
-  ['AAA', 'BBB', 'CCC']
-]);
+console.table([[111, 222, 333], ['AAA', 'BBB', 'CCC']]);

@@ -10,7 +10,9 @@ const openRequest = window.indexedDB.open(dbname, dbversion);
 openRequest.onsuccess = function() {
   const database = this.result;
   document.writeln(
-    `Database <em>${database.name}</em> version <em>${database.version}</em> opened successfully.<br>`
+    `Database <em>${database.name}</em> version <em>${
+      database.version
+    }</em> opened successfully.<br>`
   );
 
   database.close();
