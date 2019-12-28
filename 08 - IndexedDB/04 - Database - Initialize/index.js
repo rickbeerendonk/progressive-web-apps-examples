@@ -8,7 +8,7 @@ request.onupgradeneeded = function(e) {
     `New database version: ${e.newVersion} (old version: ${e.oldVersion}).`
   );
 };
-request.onsuccess = function(e) {
+request.onsuccess = function() {
   // Close database
   this.result.close();
   // Delete database

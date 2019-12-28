@@ -6,12 +6,12 @@ const dbname = 'test_database_upgrade';
 // Create database
 
 const request1 = window.indexedDB.open(dbname, 1);
-request1.onupgradeneeded = function(event) {
+request1.onupgradeneeded = function() {
   // Create dabase variable
   const db = this.result;
   // Create Object Stores
   let players = db.createObjectStore('players', { keyPath: 'name' });
-  let grandslams = db.createObjectStore('grandslams', {
+  db.createObjectStore('grandslams', {
     autoIncrement: 'true'
   });
   // Create Index
@@ -21,7 +21,7 @@ request1.onupgradeneeded = function(event) {
 
   //debugger;
 };
-request1.onsuccess = function(event) {
+request1.onsuccess = function() {
   // Close database
   this.result.close();
   // Delete database

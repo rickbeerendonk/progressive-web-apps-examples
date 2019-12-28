@@ -6,8 +6,8 @@ const dbname = 'test_database_delete';
 // Create/open and close database
 
 const openRequest = window.indexedDB.open(dbname);
-openRequest.onsuccess = function(e) {
-  database = this.result;
+openRequest.onsuccess = function() {
+  const database = this.result;
   document.writeln(
     `Database <em>${database.name}</em> created/opened successfully.<br>`
   );
@@ -18,9 +18,9 @@ openRequest.onsuccess = function(e) {
 // Delete database
 
 const deleteRequest = window.indexedDB.deleteDatabase(dbname);
-deleteRequest.onerror = function(event) {
+deleteRequest.onerror = function() {
   document.writeln('Error deleting database.<br>');
 };
-deleteRequest.onsuccess = function(event) {
+deleteRequest.onsuccess = function() {
   document.writeln('Database deleted successfully.<br>');
 };

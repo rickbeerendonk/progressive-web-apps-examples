@@ -6,7 +6,7 @@ const dbname = 'test_database_onVersionChange';
 // Create database
 
 const request1 = window.indexedDB.open(dbname, 1);
-request1.onsuccess = function(e) {
+request1.onsuccess = function() {
   // Close database
   this.result.close();
 };
@@ -16,16 +16,14 @@ request1.onsuccess = function(e) {
 const request2 = window.indexedDB.open(dbname, 2);
 request2.onupgradeneeded = function(e) {
   document.writeln(
-    `Database will upgrade from version ${e.oldVersion} to version ${
-      e.newVersion
-    }.`
+    `Database will upgrade from version ${e.oldVersion} to version ${e.newVersion}.`
   );
   // Upgrade database
   document.writeln(
     'The update commands can be defined in the onupgradeneeded event.'
   );
 };
-request2.onsuccess = function(e) {
+request2.onsuccess = function() {
   // Close database
   this.result.close();
   // Delete database
