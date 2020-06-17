@@ -2,11 +2,11 @@
 
 ## Specification
 
-* https://www.w3.org/TR/notifications/
+- https://notifications.spec.whatwg.org/
 
 ## Reset Permission
 
-* In Chrome: [chrome://settings/content/notifications](chrome://settings/content/notifications)
+- In Chrome: [chrome://settings/content/notifications](chrome://settings/content/notifications)
 
 ## License
 
