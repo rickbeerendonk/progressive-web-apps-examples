@@ -3,9 +3,9 @@
 
 const cacheName = 'cache4-v1';
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(cacheName).then(function(cache) {
+    caches.open(cacheName).then(function (cache) {
       return cache.addAll([
         '.',
         'index.html',
@@ -20,15 +20,15 @@ self.addEventListener('install', function(event) {
   );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function (event) {
   console.log(event.request.url);
 
   event.respondWith(
-    caches.open(cacheName).then(function(cache) {
-      return cache.match(event.request).then(function(response) {
+    caches.open(cacheName).then(function (cache) {
+      return cache.match(event.request).then(function (response) {
         return (
           response ||
-          fetch(event.request).then(function(response) {
+          fetch(event.request).then(function (response) {
             cache.put(event.request, response.clone());
             return response;
           })

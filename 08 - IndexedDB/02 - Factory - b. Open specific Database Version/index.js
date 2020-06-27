@@ -7,7 +7,7 @@ const dbversion = 3; // Must be an integer!
 // Create/open and close database
 
 const openRequest = window.indexedDB.open(dbname, dbversion);
-openRequest.onsuccess = function() {
+openRequest.onsuccess = function () {
   const database = this.result;
   document.writeln(
     `Database <em>${database.name}</em> version <em>${database.version}</em> opened successfully.<br>`
@@ -19,9 +19,9 @@ openRequest.onsuccess = function() {
 // Delete database
 
 const deleteRequest = window.indexedDB.deleteDatabase(dbname);
-deleteRequest.onerror = function() {
+deleteRequest.onerror = function () {
   document.writeln('Error deleting database.<br>');
 };
-deleteRequest.onsuccess = function() {
+deleteRequest.onsuccess = function () {
   document.writeln('Database deleted successfully.<br>');
 };

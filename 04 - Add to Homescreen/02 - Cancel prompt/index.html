@@ -29,7 +29,7 @@
         document.writeln('No service worker support in this browser.');
       }
 
-      window.addEventListener('beforeinstallprompt', function(event) {
+      window.addEventListener('beforeinstallprompt', function (event) {
         // Don't show the install prompt to the user (Chrome < 68)
         event.preventDefault();
         return false;

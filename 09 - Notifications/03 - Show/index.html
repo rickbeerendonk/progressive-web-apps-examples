@@ -34,7 +34,7 @@
             document.writeln('Notification permission already denied.');
             break;
           default:
-            Notification.requestPermission(function(status) {
+            Notification.requestPermission(function (status) {
               document.writeln(
                 `Notification permission requested and received: ${status}.`
               );
@@ -43,7 +43,7 @@
         }
 
         if (Notification.permission === 'granted') {
-          navigator.serviceWorker.getRegistration().then(function(reg) {
+          navigator.serviceWorker.getRegistration().then(function (reg) {
             reg.showNotification('My Notification!');
           });
         }

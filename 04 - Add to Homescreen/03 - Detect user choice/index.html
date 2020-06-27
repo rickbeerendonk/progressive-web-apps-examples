@@ -29,8 +29,8 @@
         document.writeln('No service worker support in this browser.');
       }
 
-      window.addEventListener('beforeinstallprompt', function(event) {
-        event.userChoice.then(function(result) {
+      window.addEventListener('beforeinstallprompt', function (event) {
+        event.userChoice.then(function (result) {
           console.log(result.outcome);
           if (result.outcome === 'dismissed') {
             // Send to analytics

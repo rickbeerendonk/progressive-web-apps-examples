@@ -6,7 +6,7 @@ const dbname = 'test_database_upgrade';
 // Create database
 
 const request1 = window.indexedDB.open(dbname, 1);
-request1.onupgradeneeded = function() {
+request1.onupgradeneeded = function () {
   // Create dabase variable
   const db = this.result;
   // Create Object Stores
@@ -19,7 +19,7 @@ request1.onupgradeneeded = function() {
 
   //debugger;
 };
-request1.onsuccess = function() {
+request1.onsuccess = function () {
   // Start a new transaction
   let db = this.result;
 
@@ -59,7 +59,7 @@ request1.onsuccess = function() {
 
   // Object Store: Get
   let player = players2.get('Rafael Nadal');
-  player.onsuccess = function() {
+  player.onsuccess = function () {
     document.writeln(
       'Get Rafael Nadal:',
       JSON.stringify(player.result),
@@ -70,7 +70,7 @@ request1.onsuccess = function() {
   // Query the data
   let players1981 = index.getAll(1981);
 
-  players1981.onsuccess = function() {
+  players1981.onsuccess = function () {
     document.writeln(
       'Players born in 1981: ',
       JSON.stringify(players1981.result),

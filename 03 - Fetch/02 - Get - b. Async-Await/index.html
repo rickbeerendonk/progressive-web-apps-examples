@@ -16,7 +16,7 @@
     <script>
       const loadingElem = document.querySelector('div');
       loadingElem.hidden = false;
-      (async function() {
+      (async function () {
         try {
           const response = await fetch('data.json');
           if (!response.ok) {

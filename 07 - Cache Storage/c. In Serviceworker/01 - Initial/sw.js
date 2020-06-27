@@ -3,9 +3,9 @@
 
 const cacheName = 'cache1-v1';
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(cacheName).then(function(cache) {
+    caches.open(cacheName).then(function (cache) {
       return cache.addAll([
         '.',
         'index.html',

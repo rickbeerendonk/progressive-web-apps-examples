@@ -14,7 +14,7 @@
     <script>
       const list = document.getElementById('list');
 
-      window.addEventListener('storage', function(e) {
+      window.addEventListener('storage', function (e) {
         list.innerHTML += `<li>"${e.key}" changed from "${e.oldValue}" to "${
           e.newValue
         }" on "${e.url}" in ${
